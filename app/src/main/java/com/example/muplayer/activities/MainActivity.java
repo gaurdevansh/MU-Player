@@ -1,8 +1,10 @@
-package com.example.muplayer;
+package com.example.muplayer.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.muplayer.R;
 
 public class MainActivity extends AppCompatActivity {
 
