@@ -1,6 +1,8 @@
 package com.example.muplayer.model;
 
-public class AudioItem {
+import java.io.Serializable;
+
+public class AudioItem implements Serializable {
     private String title;
     private String duration;
     private String path;
@@ -53,5 +55,16 @@ public class AudioItem {
 
     public void setAlbum(String album) {
         this.album = album;
+    }
+
+    @Override
+    public String toString() {
+        return "AudioItem{" +
+                "title='" + title + '\'' +
+                ", duration='" + duration + '\'' +
+                ", path='" + path + '\'' +
+                ", artist='" + artist + '\'' +
+                ", album='" + album + '\'' +
+                '}';
     }
 }

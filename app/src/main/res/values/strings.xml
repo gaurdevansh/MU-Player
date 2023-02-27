@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MU Player</string>
+    <string name="storage_permission_text">Storage permission is required to continue. Please go to settings and provide permission</string>
 </resources>
