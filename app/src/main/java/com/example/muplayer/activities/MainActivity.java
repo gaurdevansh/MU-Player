@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
         setContentView(R.layout.activity_main);
 
         audioItemList = AudioDataUtil.getInstance().getAudioItemList();
-        Log.d(TAG, "onCreate: "+audioItemList.get(0).toString());
         fragContainer = findViewById(R.id.fragContainer);
         bottomNavBar = findViewById(R.id.bottomNavBar);
 
