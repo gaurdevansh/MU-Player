@@ -1,6 +1,7 @@
 package com.example.muplayer.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +16,9 @@ import com.example.muplayer.R;
 import com.example.muplayer.adapter.AudiosAdapter;
 import com.example.muplayer.utils.AudioDataUtil;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements AudiosAdapter.OnClickListener{
 
+    private static final String TAG = "HomeFragment";
     private RecyclerView recyclerView;
     private AudiosAdapter adapter;
     public HomeFragment() {}
@@ -31,10 +33,15 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = getActivity().findViewById(R.id.rv_audios);
-        adapter = new AudiosAdapter(AudioDataUtil.getInstance().getAudioItemList());
+        adapter = new AudiosAdapter(AudioDataUtil.getInstance().getAudioItemList(), this::onClick);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
+    }
+
+    @Override
+    public void onClick(int pos) {
+        Log.d(TAG, "onClick: "+pos);
     }
 }

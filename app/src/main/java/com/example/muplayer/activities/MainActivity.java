@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
 
     private static final String TAG = "MainActivity";
     List<AudioItem> audioItemList = new ArrayList<>();
-    private FrameLayout fragContainer;
+    private FrameLayout fragContainer, fragAudioPlayer;
     private BottomNavigationView bottomNavBar;
     private HomeFragment homeFragment;
     private LibraryFragment libraryFragment;
@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
         audioItemList = AudioDataUtil.getInstance().getAudioItemList();
         fragContainer = findViewById(R.id.fragContainer);
         bottomNavBar = findViewById(R.id.bottomNavBar);
+        fragAudioPlayer = findViewById(R.id.frag_audio_player);
 
         homeFragment = new HomeFragment();
         searchFragment = new SearchFragment();
@@ -64,4 +65,5 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
         }
         return false;
     }
+
 }

@@ -18,9 +18,11 @@ import java.util.List;
 public class AudiosAdapter extends RecyclerView.Adapter<AudiosAdapter.ViewHolder> {
 
     private List<AudioItem> audioItemList;
+    private OnClickListener listener;
 
-    public AudiosAdapter(List<AudioItem> audioItemList) {
+    public AudiosAdapter(List<AudioItem> audioItemList, OnClickListener listener) {
         this.audioItemList = audioItemList;
+        this.listener = listener;
     }
 
     @NonNull
@@ -43,7 +45,7 @@ public class AudiosAdapter extends RecyclerView.Adapter<AudiosAdapter.ViewHolder
         return audioItemList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView  iv_poster;
         private TextView tv_title;
@@ -53,6 +55,16 @@ public class AudiosAdapter extends RecyclerView.Adapter<AudiosAdapter.ViewHolder
             iv_poster = itemView.findViewById(R.id.iv_poster);
             tv_title = itemView.findViewById(R.id.tv_title);
             tv_artist = itemView.findViewById(R.id.tv_artist);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.onClick(getAdapterPosition());
+                }
+            });
         }
+    }
+
+    public interface OnClickListener {
+        public void onClick(int pos);
     }
 }

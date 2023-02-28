@@ -7,6 +7,15 @@
     tools:context=".activities.MainActivity">
 
     <FrameLayout
+        android:id="@+id/frag_audio_player"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavBar" />
+
+    <FrameLayout
         android:id="@+id/fragContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -14,7 +23,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@color/black"
-        app:layout_constraintBottom_toBottomOf="@id/bottomNavBar"/>
+        app:layout_constraintBottom_toTopOf="@id/bottomNavBar"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavBar"
