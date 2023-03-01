@@ -21,7 +21,10 @@ public class HomeFragment extends Fragment implements AudiosAdapter.OnClickListe
     private static final String TAG = "HomeFragment";
     private RecyclerView recyclerView;
     private AudiosAdapter adapter;
-    public HomeFragment() {}
+    private HomeFragmentListener listener;
+    public HomeFragment(HomeFragmentListener listener) {
+        this.listener = listener;
+    }
 
     @Nullable
     @Override
@@ -43,5 +46,10 @@ public class HomeFragment extends Fragment implements AudiosAdapter.OnClickListe
     @Override
     public void onClick(int pos) {
         Log.d(TAG, "onClick: "+pos);
+        listener.openMusicPlayerFragment(pos);
+    }
+
+    public interface HomeFragmentListener {
+        public void openMusicPlayerFragment(int pos);
     }
 }

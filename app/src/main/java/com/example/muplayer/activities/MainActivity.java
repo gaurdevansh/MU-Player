@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import com.example.muplayer.R;
+import com.example.muplayer.fragments.AudioPlayerFragment;
 import com.example.muplayer.fragments.HomeFragment;
 import com.example.muplayer.fragments.LibraryFragment;
 import com.example.muplayer.fragments.SearchFragment;
@@ -20,7 +22,7 @@ import com.google.android.material.navigation.NavigationBarView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener{
+public class MainActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener, HomeFragment.HomeFragmentListener{
 
     private static final String TAG = "MainActivity";
     List<AudioItem> audioItemList = new ArrayList<>();
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
     private HomeFragment homeFragment;
     private LibraryFragment libraryFragment;
     private SearchFragment searchFragment;
+    private AudioPlayerFragment audioPlayerFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
         bottomNavBar = findViewById(R.id.bottomNavBar);
         fragAudioPlayer = findViewById(R.id.frag_audio_player);
 
-        homeFragment = new HomeFragment();
+        homeFragment = new HomeFragment(this::openMusicPlayerFragment);
         searchFragment = new SearchFragment();
         libraryFragment = new LibraryFragment();
 
@@ -66,4 +69,10 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
         return false;
     }
 
+    @Override
+    public void openMusicPlayerFragment(int pos) {
+        audioPlayerFragment = new AudioPlayerFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.frag_audio_player, audioPlayerFragment, "AudioPlayerFragment").addToBackStack(null).commit();
+        //bottomNavBar.setVisibility(View.GONE);
+    }
 }

@@ -20,4 +20,5 @@ public class AudioPlayerFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_audio_player, container, false);
     }
+
 }
