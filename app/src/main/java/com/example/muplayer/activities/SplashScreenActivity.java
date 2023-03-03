@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.muplayer.R;
@@ -30,12 +31,14 @@ public class SplashScreenActivity extends AppCompatActivity {
     private TextView tv_splash;
     private int SPLASH_SCREEN_TIME = 2000;
     private int PERMISSION_REQUEST_CODE = 100;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         tv_splash = findViewById(R.id.tv_splash);
+        progressBar = findViewById(R.id.loading_progress_bar);
     }
 
     @Override

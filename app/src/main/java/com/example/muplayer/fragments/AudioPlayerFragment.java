@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.muplayer.R;
+import com.example.muplayer.activities.MainActivity;
 
 public class AudioPlayerFragment extends Fragment {
 
@@ -21,4 +22,9 @@ public class AudioPlayerFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_audio_player, container, false);
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ((MainActivity)getActivity()).showBottomNavigationBar();
+    }
 }

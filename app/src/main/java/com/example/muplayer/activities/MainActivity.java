@@ -73,6 +73,10 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
     public void openMusicPlayerFragment(int pos) {
         audioPlayerFragment = new AudioPlayerFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.frag_audio_player, audioPlayerFragment, "AudioPlayerFragment").addToBackStack(null).commit();
-        //bottomNavBar.setVisibility(View.GONE);
+        bottomNavBar.setVisibility(View.GONE);
+    }
+
+    public void showBottomNavigationBar() {
+        bottomNavBar.setVisibility(View.VISIBLE);
     }
 }
